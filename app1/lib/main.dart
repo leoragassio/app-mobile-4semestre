@@ -3,14 +3,28 @@ import 'package:flutter/material.dart';
 void main() => runApp(Cores());
 
 class Cores extends StatelessWidget {
-
- final Color corPrincipal = Colors.red;
-
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
       title: 'Cores',
-      home: new Scaffold(
+      home: Home(),
+    ); 
+  }
+}
+
+class Home extends StatefulWidget {
+  const Home({super.key});
+
+  @override
+  State<Home> createState() => _HomeState();
+}
+
+class _HomeState extends State<Home> {
+Color corPrincipal = Colors.red;
+
+  @override
+  Widget build(BuildContext context) {
+    return new Scaffold(
         appBar: AppBar(
           title: Text('Cores'),
           backgroundColor: corPrincipal,
@@ -32,7 +46,16 @@ class Cores extends StatelessWidget {
                   padding: EdgeInsets.all(10),
                 ),
                 ElevatedButton(
-                  onPressed: (){}, 
+                  onPressed: (){
+                    setState(() {
+                   
+                    if(corPrincipal == Colors.red){
+                      corPrincipal = Colors.blue;
+                    }else{
+                      corPrincipal = Colors.red;
+                    }
+                    });
+                  }, 
                   child: Text(
                     'Trocar cor',
                     style:  TextStyle(
@@ -46,8 +69,11 @@ class Cores extends StatelessWidget {
               ],
             ),
           ),
-        ),
-      );
+        );
   }
 }
-//Parei no video 8  da PlayList....
+
+
+
+
+//Parei no video 9  da PlayList....
