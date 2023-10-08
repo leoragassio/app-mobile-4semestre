@@ -50,4 +50,4 @@ class Cores extends StatelessWidget {
       );
   }
 }
-//Parei no video 8  da PlayList
+//Parei no video 8  da PlayList....
