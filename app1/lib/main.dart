@@ -20,14 +20,52 @@ class Home extends StatefulWidget {
 }
 
 class _HomeState extends State<Home> {
-Color corPrincipal = Colors.red;
+List<Color> opcoesCorBarra;
+List<Color> opcoesCorTexto;
+List<Color> opcoesCorFundo;
+List<String> cores;
+int opcaoAtual;
+
+@override
+  void initState() {
+    super.initState();
+    opcoesCorBarra = [
+      Colors.green[900],
+      Colors.red[900],
+      Colors.blue[900],
+      Colors.orange[900],
+      Colors.purple[900],
+    ];
+
+    opcoesCorTexto = [
+      Colors.green[800],
+      Colors.red[800],
+      Colors.blue[800],
+      Colors.orange[800],
+      Colors.purple[800],
+
+    ];
+
+    opcoesCorFundo = [
+      Colors.green[50],
+      Colors.red[50],
+      Colors.blue[50],
+      Colors.orange[50],
+      Colors.purple[50],
+    ];
+
+    cores = ['Verde','Vermelho','Azul','Laranja','Roxo'];
+
+    opcaoAtual = 0;
+  }
 
   @override
   Widget build(BuildContext context) {
     return new Scaffold(
+      backgroundColor: opcoesCorFundo[opcaoAtual],
         appBar: AppBar(
           title: Text('Cores'),
-          backgroundColor: corPrincipal,
+          backgroundColor: opcoesCorBarra[opcaoAtual],
           centerTitle: true,
         ),
           body: Center(
@@ -36,10 +74,10 @@ Color corPrincipal = Colors.red;
               crossAxisAlignment: CrossAxisAlignment.center,
               children: [
                 Text(
-                  'Vermelho',
+                  cores[opcaoAtual],
                   style: TextStyle(
                     fontSize: 50,
-                    color: corPrincipal,
+                    color: opcoesCorTexto[opcaoAtual],
                   ),
                 ),         
                 Padding(
@@ -48,12 +86,8 @@ Color corPrincipal = Colors.red;
                 ElevatedButton(
                   onPressed: (){
                     setState(() {
-                   
-                    if(corPrincipal == Colors.red){
-                      corPrincipal = Colors.blue;
-                    }else{
-                      corPrincipal = Colors.red;
-                    }
+                  opcaoAtual = 
+                  opcaoAtual < opcoesCorBarra.length - 1 ? ++opcaoAtual : 0;    
                     });
                   }, 
                   child: Text(
